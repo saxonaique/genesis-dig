@@ -69,8 +69,10 @@ class MotorGenesisDIG:
             return evento
 
         a, b = self.rng.sample(activas, 2)
+        estados_antes = [a.estado, b.estado]
         clave = tuple(sorted((a.estado, b.estado)))
         regla = self.reglas.get(clave)
+        detalle_transformacion = None
 
         if regla is None:
             resultado = "sin_regla"
@@ -80,6 +82,10 @@ class MotorGenesisDIG:
             objetivo = a if a.id < b.id else b
             estado_anterior = objetivo.estado
             objetivo.estado = regla.nuevo_estado or (objetivo.estado + "'")
+            detalle_transformacion = {
+                "estado_anterior": estado_anterior,
+                "estado_nuevo": objetivo.estado,
+            }
             resultado = "transformacion"
         else:  # anular
             a.activa = False
@@ -89,14 +95,12 @@ class MotorGenesisDIG:
         evento = {
             "ciclo": self.ciclo,
             "ids": [a.id, b.id],
-            "estados_antes": [a.estado, b.estado] if resultado != "transformacion" else None,
+            "estados_antes": estados_antes,
             "resultado": resultado,
             "regla": regla.accion if regla else None,
         }
-        if resultado == "transformacion":
-            evento["estado_anterior"] = estado_anterior
-            evento["estado_nuevo"] = objetivo.estado
-            evento["estados_antes"] = None
+        if detalle_transformacion:
+            evento.update(detalle_transformacion)
 
         self.historial.append(evento)
         self.ciclo += 1
