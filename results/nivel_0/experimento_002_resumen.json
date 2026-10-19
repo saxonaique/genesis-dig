@@ -1,0 +1,60 @@
+{
+  "experimento": "E002",
+  "autor": "José María Pérez Rodríguez (JMPR)",
+  "estados": [
+    "A",
+    "B",
+    "C"
+  ],
+  "pares_posibles": [
+    [
+      "A",
+      "A"
+    ],
+    [
+      "A",
+      "B"
+    ],
+    [
+      "A",
+      "C"
+    ],
+    [
+      "B",
+      "B"
+    ],
+    [
+      "B",
+      "C"
+    ],
+    [
+      "C",
+      "C"
+    ]
+  ],
+  "estado_inicial": [
+    "A",
+    "B",
+    "C",
+    "A",
+    "B",
+    "C"
+  ],
+  "pasos_por_ejecucion": 200,
+  "umbral_persistencia_transiciones": 30,
+  "tablas_examinadas": 729,
+  "ejecuciones": 3645,
+  "ejecuciones_con_persistencia_temporal": 1080,
+  "fraccion_persistencia_temporal": 0.2962962962962963,
+  "ejecuciones_con_composicion_final_absorbente": 1059,
+  "promedio_cambios_estado": 97.27489711934156,
+  "composiciones_finales_distintas": 21,
+  "nota": "Resumen de la ejecución registrada del prototipo E002. Regenerar con el código versionado tras cualquier cambio.",
+  "limitaciones": [
+    "La persistencia temporal depende del umbral operacional elegido.",
+    "Una composición sin cambios durante una ventana finita no demuestra estabilidad indefinida.",
+    "La selección de pares, la actualización del individuo de menor índice y las tablas son decisiones de modelado.",
+    "La absorbencia se comprueba para todas las parejas de individuos posibles en la composición final, bajo las reglas de este modelo.",
+    "Los resultados no representan una ley física ni validan DIG."
+  ]
+}
