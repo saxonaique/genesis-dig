@@ -171,16 +171,17 @@ Génesis DIG avanzará mediante etapas definidas por los resultados obtenidos. E
 
 Las decisiones futuras se tomarán después de estudiar los resultados, identificar las limitaciones del modelo y determinar qué merece conservarse, modificarse o abandonarse. No se establecerán de antemano los resultados que debe producir cada etapa.
 
-## 13. Estado actual
+## 13. Estado actual — actualización 2026-10-19
 
-En esta fase se ha definido el propósito general de Génesis DIG y sus principios fundacionales. Quedan pendientes:
+El repositorio contiene ya una primera base ejecutable y una secuencia inicial de experimentos exploratorios:
 
-- Auditar el código y los experimentos históricos.
-- Precisar la metodología experimental.
-- Definir la primera pregunta experimental operativa.
-- Implementar y comprobar el primer experimento.
+- **E001 — interacción mínima y anulación:** código recuperado y ejecutado en un entorno local de trabajo. Las cinco pruebas unitarias disponibles pasaron. La ejecución usa una regla de anulación explícita; por tanto, comprueba el funcionamiento del motor, no la emergencia de la anulación.
+- **E002 — exploración de persistencia sin acción explícita:** se enumeran 729 tablas deterministas de interacción y se realizan cinco ejecuciones por tabla (3.645 ejecuciones en total), con seis individuos, tres estados y 200 pasos por ejecución. En la primera ejecución reproducible del análisis, 1.080 ejecuciones (29,63 %) alcanzaron una racha de al menos 30 transiciones sin cambio de composición. Se registraron 21 composiciones finales distintas y una media de 97,27 cambios de estado por ejecución.
+- E002 es un modelo exploratorio abstracto. La persistencia temporal depende de un umbral elegido por el investigador y no demuestra estabilidad indefinida ni valida una ley física o la teoría DIG.
+- El código y el resumen reproducible de E002 se conservan en el repositorio. La siguiente tarea es reforzar los controles, separar de forma explícita persistencia temporal y estados absorbentes, y estudiar la sensibilidad a las decisiones de modelado.
+- La ejecución se ha realizado en un entorno de trabajo, no en el ordenador Manjaro del autor. La reproducción en ese equipo sigue pendiente.
 
-**No se considera ejecutado ningún experimento nuevo por el mero hecho de haber definido este marco.**
+Los resultados son provisionales y deben mantenerse vinculados a la versión exacta del código que los genera.
 
 ## 14. Principio rector
 
