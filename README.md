@@ -3,7 +3,7 @@
 
 **Autor:** José María Pérez Rodríguez (JMPR)  
 **Proyecto:** Génesis DIG — Investigación del Nivel 0  
-**Estado:** Fase fundacional; pendiente de implementación y experimentación.
+**Estado:** base ejecutable del Nivel 0; E001 y E002 implementados. La auditoría de E002 y el refuerzo de sus pruebas y documentación se completaron el 2026-10-19; no se ha iniciado E003.
 
 ---
 
@@ -178,7 +178,7 @@ El repositorio contiene ya una primera base ejecutable y una secuencia inicial d
 - **E001 — interacción mínima y anulación:** código recuperado y ejecutado en un entorno local de trabajo. Las cinco pruebas unitarias disponibles pasaron. La ejecución usa una regla de anulación explícita; por tanto, comprueba el funcionamiento del motor, no la emergencia de la anulación.
 - **E002 — exploración de persistencia sin acción explícita:** se enumeran 729 tablas deterministas de interacción y se realizan cinco ejecuciones por tabla (3.645 ejecuciones en total), con seis individuos, tres estados y 200 pasos por ejecución. En la primera ejecución reproducible del análisis, 1.080 ejecuciones (29,63 %) alcanzaron una racha de al menos 30 transiciones sin cambio de composición. Se registraron 21 composiciones finales distintas y una media de 97,27 cambios de estado por ejecución.
 - E002 es un modelo exploratorio abstracto. La persistencia temporal depende de un umbral elegido por el investigador y no demuestra estabilidad indefinida ni valida una ley física o la teoría DIG.
-- El código y el resumen reproducible de E002 se conservan en el repositorio. La siguiente tarea es reforzar los controles, separar de forma explícita persistencia temporal y estados absorbentes, y estudiar la sensibilidad a las decisiones de modelado.
+- El código y el resumen reproducible de E002 se conservan en el repositorio. La auditoría confirmó la absorbencia para todas las parejas posibles y añadió pruebas de casos mixtos y parejas iguales o distintas. Quedan como trabajo futuro estudiar controles y sensibilidad a las decisiones de modelado.
 - La ejecución se ha realizado en un entorno de trabajo, no en el ordenador Manjaro del autor. La reproducción en ese equipo sigue pendiente.
 
 Los resultados son provisionales y deben mantenerse vinculados a la versión exacta del código que los genera.

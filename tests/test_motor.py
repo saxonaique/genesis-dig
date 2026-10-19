@@ -1,4 +1,10 @@
 import unittest
+from pathlib import Path
+import sys
+
+# Permite ejecutar unittest discover desde la raíz sin instalar el paquete.
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
 
 from genesis_dig.motor import MotorGenesisDIG, Regla
 

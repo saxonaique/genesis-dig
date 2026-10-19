@@ -1,8 +1,6 @@
 import unittest
-from itertools import product
-
 from experiments.nivel_0.experimento_002 import (
-    ESTADOS, PARES, ejecutar, explorar, es_composicion_absorbente
+    PARES, ejecutar, es_composicion_absorbente
 )
 
 
@@ -23,6 +21,31 @@ class Experimento002Tests(unittest.TestCase):
         tabla = ["A"] * len(PARES)
         tabla[0] = "B"
         self.assertFalse(es_composicion_absorbente(tuple(tabla), ("A", "A", "A")))
+
+    def test_composicion_mixta_absorbente_si_salidas_conservan_objetivo(self):
+        tabla = ["A"] * len(PARES)
+        tabla[PARES.index(("A", "B"))] = "A"
+        self.assertTrue(es_composicion_absorbente(tuple(tabla), ("A", "A", "B")))
+
+    def test_composicion_mixta_no_absorbente_si_interaccion_cambia_objetivo(self):
+        tabla = ["A"] * len(PARES)
+        tabla[PARES.index(("A", "B"))] = "B"
+        self.assertFalse(es_composicion_absorbente(tuple(tabla), ("A", "A", "B")))
+
+    def test_pareja_mismo_estado_debe_conservar_estado(self):
+        tabla = ["A"] * len(PARES)
+        tabla[PARES.index(("B", "B"))] = "C"
+        self.assertFalse(es_composicion_absorbente(tuple(tabla), ("B", "B")))
+
+    def test_pareja_distinta_puede_conservar_estado_del_objetivo(self):
+        tabla = ["A"] * len(PARES)
+        tabla[PARES.index(("A", "B"))] = "A"
+        self.assertTrue(es_composicion_absorbente(tuple(tabla), ("A", "B")))
+
+    def test_cambio_del_objetivo_hace_no_absorbente_composicion_con_otros_estados(self):
+        tabla = ["A"] * len(PARES)
+        tabla[PARES.index(("B", "C"))] = "C"
+        self.assertFalse(es_composicion_absorbente(tuple(tabla), ("B", "C", "A")))
 
     def test_ejecucion_registra_medidas(self):
         tabla = tuple("A" for _ in PARES)
