@@ -328,3 +328,51 @@ El modelo C de E029 no aporta evidencia fiable de una ley determinista de tres v
 **JMPR — José María Pérez Rodríguez**  
 *Génesis DIG — Auditoría de E029-C*  
 *22 de noviembre de 2026*
+
+
+## 15. E031 — Ejecución metodológicamente inválida por inclusión de la fase transitoria
+
+**Investigador:** José María Pérez Rodríguez (JMPR)  
+**Pregunta prevista:** ¿La relación ΔM → ΔS conserva su forma y capacidad predictiva al cambiar la ventana temporal y la semilla?
+
+**Incidencia comunicada:**
+La ejecución de E031 registró M y S desde el paso 1, en vez de restringir el ajuste de la prueba principal a la meseta. En consecuencia, el entrenamiento incorporó una fase transitoria que no formaba parte del intervalo de meseta usado en E029.
+
+**Comparación comunicada:**
+
+| Aspecto | E029 | E031 ejecutada |
+|---|---|---|
+| Entrenamiento de la prueba principal | 8.000–8.999 | 2–8.999 |
+| Test | 9.000–9.999 | 9.000–9.999 |
+| R² de entrenamiento comunicado | 0,9979–1,0 | 0,0122–0,5646 |
+| R² de test comunicado | −0,2067 a 0,9813 | −10¹⁴ a −10¹⁷ |
+
+Los intervalos se reproducen según el informe recibido; debe comprobarse el indexado exacto en el script antes de una reproducción independiente.
+
+**Interpretación metodológica:**
+La inclusión de la fase transitoria cambia la población de datos usada para estimar el modelo. Por ello, los resultados de E031 no son directamente comparables con el ajuste de E029 restringido a la meseta. Los R² de test extremadamente negativos indican un fallo predictivo del ajuste realizado, pero no pueden atribuirse a una propiedad del campo ni utilizarse para caracterizar el comportamiento de la meseta.
+
+**Qué aporta E029 y qué no:**
+- En E029, el modelo A presentó R² de entrenamiento entre 0,9979 y 1,0 por semilla.
+- En el test temporal 9.000–9.999, las semillas 7, 42 y 99 presentaron R² negativos; las semillas 21 y 2024 mantuvieron R² altos.
+- Esto demuestra que el ajuste lineal ΔS = a·ΔM + b no tuvo capacidad predictiva temporal uniforme en las cinco trayectorias examinadas.
+- No demuestra por sí solo que la relación no se generalice entre todas las ventanas temporales.
+- Tampoco equivale a una prueba estricta de transferencia entre semillas. El resultado agrupado comunicado en E029 es una evaluación conjunta, pero sin el protocolo exacto no debe confundirse con entrenar en unas semillas y evaluar en semillas completamente excluidas.
+
+**Conclusión corregida:**
+E031, en su ejecución actual, queda invalidada para responder a la pregunta prevista sobre la estabilidad del acoplamiento en la meseta. No permite concluir que la relación ΔM → ΔS sea una propiedad general o que haya desaparecido. E029 sí aporta evidencia de que el modelo lineal no predice de forma uniforme el tramo temporal posterior en todas las semillas.
+
+**Decisión metodológica:**
+- Conservar E031 como registro de una incidencia metodológica; no borrar sus resultados, pero etiquetarlos como no comparables con E029.
+- No modificar la dinámica del motor.
+- Si se repite la prueba, fijar explícitamente los índices de cada ventana antes del ajuste y verificar que todas las variables derivadas (M, S, ΔM, ΔS) se calculen y recorten con índices coherentes.
+- Separar tres validaciones: temporal dentro de una semilla, transferencia a semillas no usadas en el ajuste y estabilidad entre ventanas de régimen.
+- No declarar una conclusión general sobre ventanas o semillas hasta ejecutar esos diseños de validación correctamente.
+
+**Estado:** ejecución realizada con error metodológico identificado; resultados no válidos para la comparación prevista; no se atribuye el fallo al campo. Pendiente decidir si se repite con ventanas correctamente delimitadas.
+
+---
+
+**JMPR — José María Pérez Rodríguez**  
+*Génesis DIG — Registro de continuidad E023–E031*  
+*22 de noviembre de 2026*
