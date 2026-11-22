@@ -376,3 +376,37 @@ E031, en su ejecución actual, queda invalidada para responder a la pregunta pre
 **JMPR — José María Pérez Rodríguez**  
 *Génesis DIG — Registro de continuidad E023–E031*  
 *22 de noviembre de 2026*
+
+
+## 16. E031 corregida — Comprobación del error absoluto del modelo A
+
+**Investigador:** José María Pérez Rodríguez (JMPR)  
+**Pregunta:** ¿Los R² altos de las semillas 21 y 2024 se deben únicamente a amplitudes diminutas de ΔS, o el error predictivo también es pequeño respecto a la variación observada en test?
+
+**Metodología comunicada:** se mantuvo la prueba temporal del modelo A: entrenamiento 8.000–9.000 y test 9.000–10.000, restringidos a la meseta. Se calculó MAE y su cociente respecto a la amplitud de ΔS en test.
+
+**Resultados comunicados:**
+
+| Semilla | R² test | MAE test | MAE / amplitud test | Amplitud ΔS test |
+|---:|---:|---:|---:|---:|
+| 7 | −0,2067 | 1,31×10⁻¹³ | 0,9950 | 1,32×10⁻¹³ |
+| 21 | 0,9965 | 5,02×10⁻¹⁵ | 0,0546 | 9,18×10⁻¹⁴ |
+| 42 | −0,3338 | 2,26×10⁻¹² | 1,0457 | 2,16×10⁻¹² |
+| 99 | −0,2682 | 1,09×10⁻¹³ | 1,0203 | 1,06×10⁻¹³ |
+| 2024 | 0,9813 | 1,54×10⁻¹⁴ | 0,1272 | 1,21×10⁻¹³ |
+
+**Interpretación:** el error de test del modelo A es pequeño en relación con la amplitud de ΔS en las semillas 21 (5,46%) y 2024 (12,72%). En 7, 42 y 99, el error es aproximadamente igual o superior a dicha amplitud (99,50%, 104,57% y 102,03%). Esto refuerza la distinción entre trayectorias donde el modelo conserva capacidad predictiva temporal y aquellas donde no.
+
+**Precisión estadística:** MAE dividido por la amplitud de test no es una medida convencional de error relativo ni, por sí solo, demuestra que el modelo supera a la predicción de la media. Los R² negativos de 7, 42 y 99 sí indican que el modelo obtuvo peor error cuadrático que la referencia de la media de test, según la definición habitual de R². Para afirmar una comparación en MAE con esa referencia, debe calcularse explícitamente el MAE del predictor constante. Los valores normalizados no descartan todos los efectos de escala, pero muestran que la amplitud pequeña no explica por sí sola los errores relativos bajos comunicados en 21 y 2024.
+
+**Conclusión provisional:** el modelo A presenta capacidad predictiva temporal dentro de las trayectorias 21 y 2024 en la ventana examinada, y no la presenta en 7, 42 y 99. Esto es evidencia de comportamiento específico de trayectoria en esta prueba, no demostración de causalidad, mecanismo ni ley universal. Tampoco acredita transferencia entre semillas.
+
+**Límite de verificación:** los números se incorporan como resultados comunicados; no se han reproducido independientemente con series crudas y código.
+
+**Estado:** complemento de E031 corregida; resultados comunicados, pendientes de reproducción independiente.
+
+---
+
+**JMPR — José María Pérez Rodríguez**  
+*Génesis DIG — Complemento E031 corregida*  
+*22 de noviembre de 2026*
