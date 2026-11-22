@@ -274,3 +274,57 @@ Se comunicaron las siguientes correlaciones exploratorias:
 **JMPR — José María Pérez Rodríguez**  
 *Génesis DIG — Registro de continuidad E023–E030*  
 *22 de noviembre de 2026*
+
+
+## 14. Auditoría de E029-C — Colinealidad y retirada de la interpretación determinista
+
+**Investigador:** José María Pérez Rodríguez (JMPR)  
+**Objeto:** determinar si el ajuste prácticamente perfecto del modelo C de E029 identifica una relación dinámica genuina entre M, S y ΔM, o si está afectado por degeneración de la matriz de diseño.
+
+**Resultados de auditoría comunicados:**
+
+| Semilla | Número de condición | Rango comunicado | VIF (M, S, ΔM) | Residuo máximo | Corr(ΔM, ΔS) |
+|---:|---:|---:|---|---:|---:|
+| 7 | 1,3×10¹⁴ | 3 de 4 | 70 / 113.537 / 299.092 | 6,8×10⁻¹⁷ | 0,9957 |
+| 21 | 8,4×10¹⁶ | 3 de 4 | 170.799 / 170.799 / 1,0×10⁹ | 7,9×10⁻¹⁷ | 0,99999 |
+| 42 | 3,4×10¹² | 4 de 4 | 45.534 / 93.952 / 269.083 | 1,9×10⁻¹⁶ | 0,9953 |
+| 99 | 7,0×10¹³ | 3 de 4 | 44.068 / 107.111 / 287.312 | 1,7×10⁻¹⁶ | 0,9955 |
+| 2024 | 5,8×10¹⁶ | 3 de 4 | 27.362 / 27.362 / 8,9×10⁸ | 9,1×10⁻¹⁷ | 0,99994 |
+
+**Interpretación de la auditoría comunicada:**
+- Los números de condición, del orden de 10¹²–10¹⁶, indican matrices extremadamente mal condicionadas.
+- Los VIF comunicados, de hasta 10⁹, indican inflación extrema de la varianza asociada a la dependencia entre predictores.
+- El rango comunicado es 3 de 4 en cuatro semillas y 4 de 4 en una. La interpretación exacta depende de la construcción y escalado de la matriz de diseño; debe conservarse el código de auditoría para verificar qué columnas se incluyeron y cómo se calculó el rango.
+- Los residuos máximos, del orden de 10⁻¹⁶, son compatibles con un ajuste a precisión de máquina, pero por sí solos no acreditan identificabilidad ni capacidad predictiva.
+- La correlación comunicada entre ΔM y ΔS es muy alta en las cinco trayectorias.
+
+**Corrección de la interpretación de E029-C:**
+
+Se retira la interpretación anterior según la cual el R² ≈ 1 del modelo C constituía evidencia de una ley determinista de tres variables. Los diagnósticos comunicados apuntan a colinealidad severa y falta de identificabilidad estable de los coeficientes. El ajuste casi perfecto no permite atribuir significado independiente a M, S y ΔM ni afirmar que el modelo C haya descubierto una ley adicional.
+
+La corrección no invalida las series originales ni elimina la asociación observada entre ΔM y ΔS. Sí invalida la lectura del ajuste perfecto de C como prueba de determinismo o de un acoplamiento genuino de tres variables.
+
+**Estado del modelo A (ΔS = a·ΔM + b):**
+La correlación comunicada entre ΔM y ΔS, de 0,9957 a 0,99999 por semilla, indica una asociación muy elevada en las series examinadas. No equivale por sí sola al R² de un modelo validado ni demuestra una ley dinámica. Deben comprobarse la definición exacta de la regresión, sus coeficientes, interceptos, escalas y amplitudes, así como su estabilidad en ventanas y datos independientes.
+
+**Conclusión provisional corregida:**
+
+El modelo C de E029 no aporta evidencia fiable de una ley determinista de tres variables: su ajuste perfecto está acompañado de diagnósticos de colinealidad extrema. La relación ΔM–ΔS merece conservarse como resultado empírico destacado, pero su interpretación como ley reproducible queda pendiente de pruebas adicionales.
+
+**Siguientes comprobaciones recomendadas, sin modificar la dinámica del motor:**
+1. Conservar y revisar el código exacto de construcción de la matriz de diseño y del cálculo de rango, número de condición y VIF.
+2. Comprobar escalado, centrado, intercepto y unidades de las columnas antes de interpretar el número de condición.
+3. Ajustar y documentar el modelo A por semilla: coeficiente, intercepto, error, amplitud de ΔM y ΔS y residuos.
+4. Comprobar estabilidad en ventanas temporales distintas y en semillas no utilizadas para formular la relación.
+5. Comparar predicción fuera de muestra con una referencia sencilla y evitar particiones que filtren información temporal.
+6. No volver a interpretar los coeficientes inestables del modelo C como propiedades físicas o parámetros intrínsecos del campo.
+
+**Límite de verificación:** los valores de esta auditoría se incorporan como resultados comunicados por el investigador. Hasta disponer del script, matriz de diseño y datos originales, esta consolidación no constituye una reproducción independiente de los diagnósticos.
+
+**Estado:** interpretación determinista de E029-C retirada; colinealidad severa comunicada; relación ΔM–ΔS conservada como asociación empírica fuerte pendiente de validación.
+
+---
+
+**JMPR — José María Pérez Rodríguez**  
+*Génesis DIG — Auditoría de E029-C*  
+*22 de noviembre de 2026*
