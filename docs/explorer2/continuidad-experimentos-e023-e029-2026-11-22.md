@@ -459,3 +459,51 @@ E031, en su ejecución actual, queda invalidada para responder a la pregunta pre
 **JMPR — José María Pérez Rodríguez**  
 *Génesis DIG — E033*  
 *22 de noviembre de 2026*
+
+
+## 18. E034 — Validación de la firma estructural en semillas nuevas
+
+**Investigador:** José María Pérez Rodríguez (JMPR)  
+**Pregunta:** ¿La firma estructural candidata de E033 clasifica de forma predictiva configuraciones nuevas según el comportamiento del modelo A?
+
+**Metodología comunicada:** se reutilizó exactamente la dinámica de etapas anteriores. Se evaluaron diez semillas nuevas, no utilizadas en E023–E033 (11, 13, 17, 19, 23, 29, 31, 37, 41 y 43). Se midieron curtosis de diferencias locales iniciales (`init_d_kurt`), correlación con tablero en meseta (`plat_checkerboard`) y media inicial (`init_mean`), y se aplicó la regla de clasificación comunicada como fijada antes de observar los resultados. El criterio de comportamiento predictivo fue `mae_rel < 0,5`.
+
+**Resultados comunicados:**
+
+| Semilla | init_d_kurt | plat_checkerboard | init_mean | Predicción | Resultado real | mae_rel | Correcta |
+|---:|---:|---:|---:|---|---|---:|---|
+| 11 | −0,1154 | +0,0318 | +0,00012 | Descompensación | Descompensación | 0,9926 | Sí |
+| 13 | +0,3010 | +0,0096 | +0,00014 | Equilibrio | Descompensación | 1,0792 | No |
+| 17 | +0,0774 | −0,0223 | +0,00017 | Descompensación | Descompensación | 1,0845 | Sí |
+| 19 | +0,0141 | +0,0125 | −0,00041 | Descompensación | Descompensación | 1,0854 | Sí |
+| 23 | −0,0972 | −0,0214 | −0,00039 | Descompensación | Descompensación | 1,0808 | Sí |
+| 29 | +0,0626 | +0,0032 | −0,00020 | Descompensación | Descompensación | 0,9495 | Sí |
+| 31 | −0,0043 | +0,0214 | +0,00015 | Descompensación | Descompensación | 0,9873 | Sí |
+| 37 | −0,0328 | +0,0183 | −0,00038 | Descompensación | Descompensación | 0,8949 | Sí |
+| 41 | +0,0124 | 0,0000 | −0,00010 | Descompensación | Descompensación | 1,0947 | Sí |
+| 43 | +0,0353 | −0,0204 | −0,00019 | Descompensación | Descompensación | 1,0363 | Sí |
+
+Las diez semillas presentaron `mae_rel` superior a 0,5 y fueron clasificadas como descompensación por el criterio comunicado.
+
+**Evaluación del resultado 9/10:** nueve de las diez semillas son descompensadas. Un clasificador constante que predijera descompensación para todas también obtendría 9/10 (90 %). La firma predijo equilibrio únicamente para la semilla 13, y esa predicción fue incorrecta. Por tanto, el porcentaje de aciertos no evidencia poder discriminante por encima de la tasa base en esta muestra. La rama positiva de la firma (equilibrio) no obtuvo ningún acierto.
+
+**Interpretación provisional:** la firma estructural identificada exploratoriamente en E033 no queda validada en este conjunto de semillas nuevas. E034 no demuestra que las características carezcan de relación con el comportamiento; muestra que la regla aplicada no identificó configuraciones equilibradas en la muestra de confirmación. La ausencia de casos equilibrados entre las diez semillas limita la capacidad de evaluar sensibilidad o discriminación de ambas clases.
+
+**Límites metodológicos:**
+1. Los resultados son comunicados y no se han reproducido independientemente con código y datos crudos.
+2. La tasa base de 9/10 descompensadas hace que la exactitud global sea una métrica insuficiente; deben comunicarse resultados por clase y compararse con la regla constante.
+3. No se observó ningún caso positivo de equilibrio en el conjunto de confirmación, por lo que no se puede estimar la capacidad de la firma para detectar configuraciones equilibradas.
+4. Diez semillas constituyen una muestra limitada; no debe inferirse que el equilibrio sea raro en la población de todas las configuraciones sin conocer el esquema de selección de semillas y ampliar la muestra.
+5. Debe conservarse la regla de clasificación original y evitar redefinir umbrales o seleccionar nuevas características a partir de estas diez semillas como si fueran un conjunto independiente de confirmación.
+
+**Conclusión provisional:** E034 no valida la firma estructural de E033. El 9/10 de aciertos es igual a la tasa base de la clase mayoritaria; la única predicción de equilibrio fue falsa. El resultado no demuestra que la firma sea inútil ni que el equilibrio sea intrínsecamente raro, pero no aporta evidencia de capacidad discriminante en esta prueba.
+
+**Decisión metodológica:** registrar E034 como validación no confirmatoria. Si se continúa, ampliar la muestra con un procedimiento de selección de semillas previamente definido, conservar criterios de clasificación y evaluación, y asegurar suficientes casos de ambas clases para evaluar discriminación. No modificar el motor ni reajustar la firma usando el conjunto de confirmación ya observado.
+
+**Estado:** E034 ejecutado según el informe recibido; firma no validada; resultado exploratorio de confirmación pendiente de reproducción independiente.
+
+---
+
+**JMPR — José María Pérez Rodríguez**  
+*Génesis DIG — E034*  
+*22 de noviembre de 2026*
