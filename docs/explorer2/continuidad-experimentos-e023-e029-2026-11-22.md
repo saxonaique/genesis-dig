@@ -1,8 +1,8 @@
-# Génesis DIG — Registro de continuidad de E023–E029
+# Génesis DIG — Registro de continuidad de E023–E030
 
 **Autor:** José María Pérez Rodríguez (JMPR)  
 **Fecha de consolidación:** 22 de noviembre de 2026  
-**Estado:** Registro de continuidad; resultados comunicados pendientes de auditoría independiente  
+**Estado:** Registro de continuidad E023–E030; resultados comunicados pendientes de auditoría independiente  
 **Repositorio:** `saxonaique/genesis-dig`
 
 ---
@@ -224,5 +224,53 @@ Cuando se cierre un experimento, se incorporará un informe definitivo con autor
 ---
 
 **JMPR — José María Pérez Rodríguez**  
-*Génesis DIG — Registro de continuidad E023–E029*  
+*Génesis DIG — Registro de continuidad E023–E030*  
+*22 de noviembre de 2026*
+
+
+## 13. E030 — Identificación de las condiciones iniciales del acoplamiento
+
+**Investigador:** José María Pérez Rodríguez (JMPR)  
+**Pregunta:** ¿Qué propiedades del estado inicial permiten explicar o anticipar las diferencias entre semillas en los coeficientes del acoplamiento observados en E029?
+
+**Diseño comunicado:**
+- Se mantuvo intacta la dinámica del motor.
+- Se examinaron las semillas 7, 21, 42, 99 y 2024.
+- Se calcularon propiedades del estado inicial (paso 0) y se compararon con los coeficientes atribuidos al modelo C de E029.
+- Las propiedades consideradas incluyeron media, varianza/dispersión, simetría, distribución espacial, correlaciones entre vecinos y distribución de diferencias locales. El informe recibido no aporta los valores completos de todas estas medidas, por lo que no pueden auditarse aquí.
+
+**Resultados comunicados:**
+
+| Semilla | Media inicial | Asimetría inicial | p₋ inicial | coef_M | coef_S | coef_dM | Intercepto |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 7 | −0,00075 | +0,0146 | 0,5010 | −2,3×10⁻¹³ | −9,37×10⁻⁴ | +6,9×10⁻⁶ | +3,7×10⁻⁶ |
+| 21 | +0,00040 | −0,0211 | 0,5000 | +9,8×10⁻⁴ | −2,51×10⁻³ | +4,9×10⁻⁶ | +4,8×10⁻⁷ |
+| 42 | −0,00029 | −0,0459 | 0,5059 | +1,1×10⁻¹² | −9,37×10⁻⁴ | −3,7×10⁻⁴ | +2,2×10⁻⁵ |
+| 99 | −0,00005 | −0,0882 | 0,4961 | −9,8×10⁻¹⁴ | −9,43×10⁻⁴ | +1,6×10⁻⁵ | −1,5×10⁻⁵ |
+| 2024 | +0,00003 | +0,0346 | 0,5000 | +9,4×10⁻⁴ | −2,43×10⁻³ | +4,0×10⁻⁶ | +3,0×10⁻⁶ |
+
+Se comunicaron las siguientes correlaciones exploratorias:
+- init_p_neg frente al intercepto: 0,985.
+- init_mean frente a coef_M / coef_S: aproximadamente ±0,75.
+- Las demás propiedades iniciales examinadas no mostraron una relación clara y consistente con los coeficientes.
+
+**Conclusión comunicada:** con cinco semillas no se identifica una propiedad inicial aislada que explique de forma robusta las diferencias entre los coeficientes del acoplamiento. Las correlaciones observadas son indicios exploratorios, no una ley predictiva.
+
+**Límites y cautelas:**
+1. El tamaño de muestra es cinco configuraciones; las correlaciones son muy sensibles a cada punto y a la selección de variables examinadas.
+2. La correlación 0,985 no debe interpretarse como evidencia suficiente de predicción o causalidad.
+3. Los coeficientes comparados proceden del modelo C de E029. Mientras no se auditen su fórmula exacta, significado, grados de libertad, ajuste y validación, tampoco está plenamente establecido qué magnitudes se están intentando explicar.
+4. El R² de entrenamiento igual a 1 por trayectoria, comunicado para E029-C, no distingue por sí solo entre una relación determinista y un ajuste excesivo. Debe revisarse el número de parámetros y cualquier posible fuga de información.
+5. No se aportan aquí las series crudas, el script ni el detalle numérico completo de todas las características iniciales. Los resultados permanecen como datos comunicados, no como verificación independiente.
+
+**Interpretación provisional:** las diferencias entre semillas no quedan explicadas por ninguna de las propiedades iniciales aisladas examinadas en este conjunto. Esto no demuestra que el estado inicial carezca de influencia; deja abierta la posibilidad de combinaciones de propiedades, estructuras espaciales más complejas o dependencia de la trayectoria.
+
+**Decisión metodológica:** no modificar el motor ni introducir mecanismos para forzar resultados. No avanzar todavía a una interpretación teórica de familias dinámicas. La prioridad sigue siendo auditar E029-C. Después podrá diseñarse una ampliación del conjunto de semillas con criterios definidos de antemano y validación fuera de muestra, evitando repetir una búsqueda de correlaciones sobre cinco puntos.
+
+**Estado:** E030 ejecutado según el informe recibido; conclusión exploratoria no concluyente; pendiente de auditoría independiente de E029-C y de reproducción de los datos de E030.
+
+---
+
+**JMPR — José María Pérez Rodríguez**  
+*Génesis DIG — Registro de continuidad E023–E030*  
 *22 de noviembre de 2026*
