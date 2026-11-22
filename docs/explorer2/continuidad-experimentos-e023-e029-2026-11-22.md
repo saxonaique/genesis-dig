@@ -410,3 +410,52 @@ E031, en su ejecución actual, queda invalidada para responder a la pregunta pre
 **JMPR — José María Pérez Rodríguez**  
 *Génesis DIG — Complemento E031 corregida*  
 *22 de noviembre de 2026*
+
+
+## 17. E033 — Caracterización estructural de configuraciones con distinto comportamiento predictivo
+
+**Investigador:** José María Pérez Rodríguez (JMPR)  
+**Pregunta:** ¿Qué características estructurales distinguen las configuraciones en las que el modelo A conserva capacidad predictiva temporal de aquellas en las que no?
+
+**Metodología comunicada:** se reutilizó exactamente la dinámica de experimentos anteriores. Se compararon cinco semillas (7, 21, 42, 99, 2024), clasificadas según los resultados predictivos comunicados en E031 corregida: equilibrio/predictividad (21, 2024) y descompensación/fallo predictivo (7, 42, 99). Se calcularon características del estado inicial y de la meseta, incluyendo media, desviación, asimetría, curtosis, autocorrelación espacial, correlación con tablero de ajedrez y estadísticos de diferencias locales.
+
+**Tres propiedades separadoras comunicadas:**
+
+| Propiedad | Media semillas 21, 2024 | Media semillas 7, 42, 99 | Separación comunicada |
+|---|---:|---:|---:|
+| Curtosis inicial de diferencias locales (init_d_kurt) | +0,0917 | −0,1268 | 1,89 |
+| Correlación tablero en meseta (plat_checkerboard) | +0,0010 | +0,0247 | 1,59 |
+| Media inicial (init_mean) | +0,000213 | −0,000364 | 1,51 |
+
+**Valores por semilla comunicados:**
+
+| Semilla | Grupo | init_d_kurt | plat_checkerboard | init_mean |
+|---:|---|---:|---:|---:|
+| 7 | Descompensación | −0,1381 | +0,0138 | −0,000753 |
+| 21 | Equilibrio | +0,1079 | +0,0056 | +0,000401 |
+| 42 | Descompensación | −0,0559 | +0,0196 | −0,000293 |
+| 99 | Descompensación | −0,1865 | +0,0406 | −0,000045 |
+| 2024 | Equilibrio | +0,0754 | −0,0036 | +0,000025 |
+
+**Patrón descriptivo comunicado:** en este conjunto, las semillas 21 y 2024 presentan curtosis inicial positiva, correlación de tablero próxima a cero y media inicial positiva; las semillas 7, 42 y 99 presentan curtosis negativa, correlación de tablero positiva y media inicial negativa. Las tres variables separan los grupos sin solapamiento en los cinco casos observados.
+
+**Interpretación provisional:** aparece una firma estructural candidata asociada al comportamiento predictivo temporal del modelo A. La curtosis de las diferencias locales iniciales, la organización tipo tablero durante la meseta y la media inicial podrían ser variables relevantes para caracterizar las configuraciones.
+
+**Límites metodológicos:**
+1. La muestra contiene únicamente cinco semillas, con grupos de dos y tres casos. Una separación perfecta en una muestra tan pequeña puede ser accidental y no estima adecuadamente la variabilidad entre configuraciones.
+2. Las propiedades se identificaron explorando múltiples características. La selección posterior de las que mejor separan los grupos introduce riesgo de selección/múltiples comparaciones; las separaciones comunicadas no deben interpretarse como significación estadística ni como capacidad predictiva validada.
+3. La clasificación de grupos deriva de resultados de E031 corregida y describe el comportamiento observado, no una clase intrínseca demostrada del campo.
+4. La correlación con tablero se mide en la meseta, mientras que curtosis y media se miden inicialmente; no se debe asumir que todas son propiedades exclusivamente iniciales ni atribuirles causalidad.
+5. Los resultados proceden del informe comunicado y no se han reproducido independientemente con código y datos crudos.
+
+**Conclusión provisional:** E033 identifica una firma estructural candidata que separa descriptivamente las cinco configuraciones examinadas según su comportamiento predictivo. No demuestra que estas tres propiedades causen el acoplamiento ni que permitan clasificar nuevas semillas. La evidencia es exploratoria.
+
+**Decisión metodológica:** la siguiente etapa recomendada es una prueba de confirmación con un conjunto ampliado de semillas, protocolo y métricas fijados antes de calcular resultados, sin modificar la dinámica del motor. Debe evaluarse si la firma propuesta se mantiene en configuraciones nuevas y si mejora la predicción frente a referencias simples. Evitar volver a seleccionar características sobre el conjunto de confirmación.
+
+**Estado:** E033 ejecutado según el informe recibido; firma estructural exploratoria comunicada; pendiente confirmación fuera de muestra y verificación independiente.
+
+---
+
+**JMPR — José María Pérez Rodríguez**  
+*Génesis DIG — E033*  
+*22 de noviembre de 2026*
